@@ -1,10 +1,13 @@
 package SWIapp.OrdersProcessing.model;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class InMemoryListOfOrders implements ListOfOrders{
 
     private final List<Order> orders = new ArrayList<>();

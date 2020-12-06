@@ -1,6 +1,8 @@
 package SWIapp.OrdersProcessing.controller;
 
 
+
+
 import SWIapp.OrdersProcessing.model.ListOfOrders;
 import SWIapp.OrdersProcessing.model.Order;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,14 +11,16 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController()
-@RequestMapping("/orders")
+@RequestMapping("api/orders")
 public class OrderController {
 
+    @Autowired
     private final ListOfOrders listOfOrders;
 
     public OrderController(ListOfOrders listOfOrders) {
@@ -36,10 +40,10 @@ public class OrderController {
         return listOfOrders.allOrders();
     }
 
-    //@PostMapping
-    //public void insertOrder(@RequestBody long id, @RequestBody Order order) {
-    //    listOfOrders.insertOrder(long id, Order order);
-    //}
+//    @PostMapping
+//    public void insertOrder(@RequestBody long id, @RequestBody Order order) {
+//        listOfOrders.insertOrder(long id, Order order);
+//    }
 
     @GetMapping (path = "{id}")
     public Order orderById(@PathVariable("id") long id) {

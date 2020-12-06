@@ -1,0 +1,6 @@
+SWIapp\OrdersProcessing\controller\OrderController.class
+SWIapp\OrdersProcessing\model\InMemoryListOfOrders.class
+SWIapp\OrdersProcessing\model\Order.class
+SWIapp\OrdersProcessing\OrdersProcessingApplication.class
+SWIapp\OrdersProcessing\model\ListOfOrders.class
+SWIapp\OrdersProcessing\controller\GlobalControllerExceptionHandler.class
