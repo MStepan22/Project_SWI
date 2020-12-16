@@ -12,6 +12,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,9 +24,13 @@ public class OrderController {
 
     @Autowired
     private final ListOfOrders listOfOrders;
+    private final String messageDestination;
+    private final JmsTemplate jmsTemplate;
 
-    public OrderController(ListOfOrders listOfOrders) {
+    public OrderController(ListOfOrders listOfOrders, @Value("${message.destination}") String messageDestination, JmsTemplate jmsTemplate) {
         this.listOfOrders = listOfOrders;
+        this.messageDestination = messageDestination;
+        this.jmsTemplate = jmsTemplate;
     }
 
     @Operation(summary = "Gets a list of all orders in the list of orders.")
