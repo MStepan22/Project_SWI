@@ -1,16 +1,18 @@
 package SWIapp.OrdersProcessing.model;
 
+import java.util.UUID;
+
 public class Order {
 
-    private final long id;
+    private final UUID id;
     private final String orderName;
 
-    public Order(long id, String orderName) {
+    public Order(UUID id, String orderName) {
         this.id = id;
         this.orderName = orderName;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 

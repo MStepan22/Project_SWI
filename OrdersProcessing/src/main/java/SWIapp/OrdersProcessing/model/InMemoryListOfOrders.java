@@ -2,10 +2,7 @@ package SWIapp.OrdersProcessing.model;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Repository
 public class InMemoryListOfOrders implements ListOfOrders{
@@ -14,14 +11,14 @@ public class InMemoryListOfOrders implements ListOfOrders{
 
     //    method insert new order in database
     @Override
-    public int insertOrder(long id, Order order) {
+    public int insertOrder(UUID id, Order order) {
         orders.add(new Order (id, order.getOrderName()));
         return 1;
     }
 
     //    method filter order from database by id
     @Override
-    public Optional<Order> orderById(long id) {
+    public Optional<Order> orderById(UUID id) {
         return orders.stream()
                 .filter(order -> order.getId() == id)
                 .findFirst();
@@ -35,7 +32,7 @@ public class InMemoryListOfOrders implements ListOfOrders{
 
     //    method delete existing order from database
     @Override
-    public int deleteOrder(long id) {
+    public int deleteOrder(UUID id) {
         Optional<Order> orderMaybe = orderById(id);
         if (orderMaybe == null) {
             return 0;
@@ -46,7 +43,7 @@ public class InMemoryListOfOrders implements ListOfOrders{
 
     //    method update existing order from database
     @Override
-    public int updateOrder(long id, Order order) {
+    public int updateOrder(UUID id, Order order) {
         return orderById(id)
                 .map(o -> {
                     int indexOfOrderToUpdate = orders.indexOf(order);
