@@ -56,12 +56,12 @@ public class OrderController {
                 .orElse(null);
     }
 
-    @DeleteMapping(path = {"id"})
+    @DeleteMapping (path = "{id}")
     public void deleteOrderById(@PathVariable("id") UUID id) {
         listOfOrders.deleteOrder(id);
     }
 
-    @PutMapping(path = {"id"})
+    @PutMapping (path = "{id}")
     public void updateOrder(@PathVariable("id") UUID id, @RequestBody Order orderToUpdate) {
         listOfOrders.updateOrder(id, orderToUpdate);
     }
